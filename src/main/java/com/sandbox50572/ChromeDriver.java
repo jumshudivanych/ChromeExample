@@ -20,7 +20,9 @@ public class ChromeDriver implements Runnable {
         this.password = password;
     }
     public void run() {
-        for(int i=0; i<1500; i++) {
+
+        //цикл
+        //for(int i=0; i<1500; i++) {
 
             //TODO ЗАПУСК Chrome
             System.setProperty("webdriver.chrome.driver","C:/idea/chromedriver.exe");
@@ -32,6 +34,7 @@ public class ChromeDriver implements Runnable {
             //Заходим на страницу google
             driver.get(url);
 
+            //TODO Автооризация в аккаунте google
             //находим элемент воити
             WebElement autorization = driver.findElementById("gb_70");
             //жмем на кнопку
@@ -39,7 +42,7 @@ public class ChromeDriver implements Runnable {
             //находим поле login
             WebElement loginField = driver.findElementById("identifierId");
             //вводим E-mail
-            loginField.sendKeys("ivanlykov028@gmail.com");
+            loginField.sendKeys("jumshudivanych@gmail.com");
             //жмем кнопку Далее
             WebElement cont = driver.findElementByClassName("CwaK9");
             cont.click();
@@ -51,6 +54,31 @@ public class ChromeDriver implements Runnable {
             WebElement cont2 = driver.findElementByClassName("CwaK9");
             cont2.click();
 
+        //переход на саит
+        driver.get("https://www.socpublic.com");
+        //находим элемент ВОЙТИ
+
+        WebElement input = driver.findElementByClassName("menu-login");
+        input.click();
+        //находим элемент login
+        WebElement loginSocpublic = driver.findElementByName("name");
+        //вводим login
+        loginSocpublic.sendKeys("jumshudivanych");
+        //вводим пароль
+        WebElement passwordSocpublic = driver.findElementByName("password");
+        passwordSocpublic.sendKeys("1234cani");
+        //TODO время на ручной мбход капчи
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //TODO вариант не годится !!! жмем капчу
+        //WebElement captcha = driver.findElementByClassName("recaptcha-checkbox-checkmark");
+        //captcha.click();
+        //находим кнопку Вход
+        WebElement inputClick = driver.findElementByClassName("btn btn-primary");
+        inputClick.click();
 
             /*
             //находим элемент поиск google
@@ -65,7 +93,7 @@ public class ChromeDriver implements Runnable {
             ritaYouTube.click();
 
 
-            */
+
             //TODO время задержки
             try {
                 Thread.sleep(250000);
@@ -75,6 +103,7 @@ public class ChromeDriver implements Runnable {
 
             driver.quit();//завершение работы браузера
 
+            */
             //инициализация генератора случаиных чисел
             Random random = new Random();
             //получение случайного числа
@@ -83,7 +112,7 @@ public class ChromeDriver implements Runnable {
             a = a * 60000;
 
             //вывод количества проиденных циклов
-            System.out.println(i);
+           // System.out.println(i);
             System.out.println("Задержка равна " + a / 60000);
 
             //задержка
@@ -92,6 +121,6 @@ public class ChromeDriver implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        //}
     }
 }
