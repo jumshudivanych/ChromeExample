@@ -21,8 +21,8 @@ public class ChromeDriver implements Runnable {
     }
     public void run() {
 
-        //цикл
-        //for(int i=0; i<1500; i++) {
+        //цикл открывающий 5 вкладок
+        for(int i=0; i<5; i++) {
 
             //TODO ЗАПУСК Chrome
             System.setProperty("webdriver.chrome.driver","C:/idea/chromedriver.exe");
@@ -77,8 +77,8 @@ public class ChromeDriver implements Runnable {
         //WebElement captcha = driver.findElementByClassName("recaptcha-checkbox-checkmark");
         //captcha.click();
         //находим кнопку Вход
-        WebElement inputClick = driver.findElementByClassName("btn btn-primary");
-        inputClick.click();
+        //WebElement inputClick = driver.findElementByClassName("btn btn-primary");
+        //inputClick.click();
 
             /*
             //находим элемент поиск google
@@ -105,22 +105,33 @@ public class ChromeDriver implements Runnable {
 
             */
             //инициализация генератора случаиных чисел
-            Random random = new Random();
+            //Random random = new Random();
             //получение случайного числа
-            long a = random.nextInt(6);
+            // a = random.nextInt(6);
             //перевод в минуты
-            a = a * 60000;
+            //a = a * 60000;
 
             //вывод количества проиденных циклов
            // System.out.println(i);
-            System.out.println("Задержка равна " + a / 60000);
+            //System.out.println("Задержка равна " + a / 60000);
 
             //задержка
+           // try {
+            //    Thread.sleep(a);
+            //} catch (InterruptedException e) {
+            //    e.printStackTrace();
+            //}
+        }
+        //закрытие 4 вкладок
+        for(int i=0; i<4; i++) {
+            driver.quit();
+            //TODO при закрытии автоматически не возвращает управление в оставшиеся открытыми
+            driver.switchTo();//TODO ???
             try {
-                Thread.sleep(a);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        //}
+        }
     }
 }
